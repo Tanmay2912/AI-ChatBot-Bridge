@@ -1,0 +1,5 @@
+{
+  "Mouse": "http://localhost:5001/middleware",
+  "Keyboard": "http://localhost:5002/middleware",
+  "Monitor": "http://localhost:5003/middleware"
+}

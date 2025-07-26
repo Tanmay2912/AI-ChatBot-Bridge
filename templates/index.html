@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BotBridge Chatbot</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-header">BotBridge</div>
+
+    <select class="workspace-selector">
+      <option value="All">All Products</option>
+    </select>
+
+    <button class="new-chat-btn">New Chat</button>
+
+    <div class="search-container">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search chats..." />
+      </div>
+    </div>
+
+    <div class="chat-list">
+      <div class="chat-list-title">Old Tickets</div>
+      <!-- Ticket list loads here dynamically -->
+    </div>
+
+    <div class="admin-link">
+      <a href="/admin" target="_blank"><i class="fas fa-user-shield"></i> Admin</a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="chat-box" id="chatBox"></div>
+
+    <div class="input-area">
+      <input type="text" class="message-input" id="userInput" placeholder="Type your message..." />
+      <button class="send-button">Send</button>
+    </div>
+
+    <div class="feature-buttons">
+      <button class="feature-button dark">
+        <i class="fas fa-moon"></i> Dark Mode
+      </button>
+      <button class="feature-button translate">
+        <i class="fas fa-globe"></i> Translate
+      </button>
+      <button class="feature-button download">
+        <i class="fas fa-file-pdf"></i> Download PDF
+      </button>
+      <button class="feature-button demo">
+        <i class="fas fa-video"></i> Demo
+      </button>
+    </div>
+  </main>
+
+  <script src="/static/js/demo.js"></script>
+  <script>
+    // Ensure toggleDark function exists to avoid error
+    function toggleDark() {
+      document.body.classList.toggle("dark");
+    }
+  </script>
+</body>
+</html>

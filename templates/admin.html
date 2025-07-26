@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BotBridge Admin Panel</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    body {
+      padding: 30px;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f9;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .metrics {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 40px;
+    }
+    .metric-box {
+      background: #ffffff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      width: 30%;
+    }
+    .metric-box h2 {
+      margin-bottom: 10px;
+    }
+    .charts {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 50px;
+    }
+    canvas {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📊 BotBridge Admin Dashboard</h1>
+
+  <div class="metrics">
+    <div class="metric-box">
+      <h2>📬 Tickets Resolved</h2>
+      <p id="totalTickets" style="font-size: 24px;">...</p>
+    </div>
+    <div class="metric-box">
+      <h2>⭐ Average Rating</h2>
+      <p id="avgRating" style="font-size: 24px;">...</p>
+    </div>
+    <div class="metric-box">
+      <h2>👨‍💻 Human Escalations</h2>
+      <p id="escalations" style="font-size: 24px;">...</p>
+    </div>
+  </div>
+
+  <div class="charts">
+    <div>
+      <h3>Tickets by Product</h3>
+      <canvas id="productChart" width="400" height="300"></canvas>
+    </div>
+    <div>
+      <h3>Rating Distribution</h3>
+      <canvas id="ratingChart" width="300" height="200"></canvas>
+    </div>
+  </div>
+
+  <script>
+    // Random value generators
+    const getRandom = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+    const getRandomFloat = (min, max, decimals) => (Math.random() * (max - min) + min).toFixed(decimals);
+
+    // Dummy Metrics
+    document.getElementById("totalTickets").innerText = getRandom(100, 300);
+    document.getElementById("avgRating").innerText = getRandomFloat(3.5, 5.0, 2);
+    document.getElementById("escalations").innerText = getRandom(10, 50);
+
+    // Chart: Tickets by Product
+    new Chart(document.getElementById('productChart'), {
+      type: 'pie',
+      data: {
+        labels: ['Mouse', 'Keyboard', 'Monitor', 'Headphones', 'Webcam'],
+        datasets: [{
+          data: [getRandom(10, 50), getRandom(10, 50), getRandom(10, 50), getRandom(10, 50), getRandom(10, 50)],
+          backgroundColor: ['#36A2EB', '#FF6384', '#FFCE56', '#4CAF50', '#9C27B0']
+        }]
+      }
+    });
+
+    // Chart: Rating Distribution
+    new Chart(document.getElementById('ratingChart'), {
+      type: 'bar',
+      data: {
+        labels: ['1⭐', '2⭐', '3⭐', '4⭐', '5⭐'],
+        datasets: [{
+          label: 'Ratings',
+          data: [getRandom(1, 5), getRandom(3, 10), getRandom(8, 15), getRandom(12, 25), getRandom(30, 60)],
+          backgroundColor: '#42a5f5'
+        }]
+      },
+      options: {
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
